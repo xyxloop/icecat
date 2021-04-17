@@ -4,6 +4,11 @@ jobs:
  build:
   runs-on: macos-latest
   steps:
+    - name: SDK
+      run: |
+        wget https://github.com/phracker/MacOSX-SDKs/releases/download/11.0-11.1/MacOSX10.13.sdk.tar.xz
+        tar xf MacOSX10.13.sdk.tar.xz
+        mv MacOSX10.13.sdk/ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
     - name: Installation depends
       run: |
         brew install yasm autoconf@2.13
