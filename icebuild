@@ -79,7 +79,7 @@ function build {
         --with-l10n-base=../l10n \
         --enable-official-branding \
         --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
-    make
+    make -j8 CXX='/usr/bin/clang++ -stdlib=libc++'
     make package
     popd
 }
