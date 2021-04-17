@@ -9,7 +9,7 @@ jobs:
         sudo apt-get -y install gnupg2 sed
     - name: Clone repo
       run: |
-        git clone https://gitlab.com/anto.trande/icecat.git
+        git clone https://gitlab.com/xyxloop/icecat.git
         cd icecat
         ./makeicecat
     - name : Upload artifact
