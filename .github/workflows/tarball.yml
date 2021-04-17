@@ -6,7 +6,7 @@ jobs:
     steps:
     - name: Clone source code
       run: |
-        sudo apt-get -y install gnupg2 sed rename
+        sudo apt-get -y install gnupg2 sed rename perl
     - name: Clone repo
       run: |
         wget https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-8b54aee6bd0c39f043bbba7a654870e032a910bc.tar.gz
