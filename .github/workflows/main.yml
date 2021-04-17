@@ -9,7 +9,7 @@ jobs:
         brew install yasm autoconf@2.13 gcc@8
     - name: Download source code
       run: |
-        wget -q https://ftp.gnu.org/gnu/gnuzilla/60.7.0/icecat-60.7.0-gnu1.tar.bz2
+        wget https://ftp.gnu.org/gnu/gnuzilla/60.7.0/icecat-60.7.0-gnu1.tar.bz2
         tar xjf icecat-60.7.0-gnu1.tar.bz2        
     - name: Prepare environment
       run: |
