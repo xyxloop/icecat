@@ -6,8 +6,7 @@ jobs:
   steps:
     - name: Installation depends
       run: |
-        brew install yasm autoconf@2.13
-        xcode-select --install
+        brew install yasm autoconf@2.13 gcc@8
     - name: Download source code
       run: |
         wget -p https://ftp.gnu.org/gnu/gnuzilla/60.7.0/icecat-60.7.0-gnu1.tar.bz2
