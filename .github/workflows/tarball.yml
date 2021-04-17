@@ -1,0 +1,19 @@
+name: build tarball file
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Clone source code
+      run: |
+        sudo apt-get -y install gnupg2 sed
+    - name: Clone repo
+      run: |
+        git clone https://gitlab.com/anto.trande/icecat.git
+        cd icecat
+        ./makeicecat
+    - name : Upload artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: OpenWrt
+        path: openwrt/bin
