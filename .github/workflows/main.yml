@@ -6,17 +6,18 @@ jobs:
   steps:
     - name: Installation depends
       run: |
-        brew install yasm autoconf@2.13 wget
+        brew install yasm autoconf@2.13
+        xcode-select --install
     - name: Download source code
       run: |
-        wget https://ftp.gnu.org/gnu/gnuzilla/60.7.0/icecat-60.7.0-gnu1.tar.bz2
-        tar xjvf icecat-60.7.0-gnu1.tar.bz2
+        wget -p https://ftp.gnu.org/gnu/gnuzilla/60.7.0/icecat-60.7.0-gnu1.tar.bz2
+        tar xjfp icecat-60.7.0-gnu1.tar.bz2        
+    - name: Prepare environment
+      run: |
         cd icecat-60.7.0
         mkdir objdir
         mkdir -p ./browser/branding/unofficial/moz.build
-    - name: Prepare environment
-      run: |
-        cd icecat-60.7.0/objdir
+        cd objdir
         ../configure --with-l10n-base=../l10n --enable-official-branding
     - name: Build
       run: |
