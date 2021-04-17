@@ -20,7 +20,7 @@ jobs:
         mkdir objdir
         mkdir -p ./browser/branding/unofficial/moz.build
         cd objdir
-        ../configure --with-l10n-base=../l10n --enable-official-branding
+        ../configure CC=/usr/local/bin/gcc CXX=/usr/local/bin/g++ --with-l10n-base=../l10n --enable-official-branding
     - name: Build
       run: |
         cd icecat-60.7.0
