@@ -7,9 +7,6 @@ jobs:
     - name: Installation depends
       run: |
         brew install yasm autoconf@2.13
-    - name: Install Xcode Command Line Tools
-      run: |
-        xcode-select --install
     - name: Download source code
       run: |
         wget https://ftp.gnu.org/gnu/gnuzilla/60.7.0/icecat-60.7.0-gnu1.tar.bz2
