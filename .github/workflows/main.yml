@@ -26,7 +26,7 @@ jobs:
     - name: Build
       run: |
         cd icecat-60.7.0
-        make -j$(nproc)
+        make -j8 CC=gcc-10 CXX=g++-10
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
