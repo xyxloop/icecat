@@ -16,7 +16,7 @@ jobs:
       run: |
         wget https://ftp.gnu.org/gnu/gnuzilla/60.7.0/icecat-60.7.0-gnu1.tar.bz2
         tar xfj icecat-60.7.0-gnu1.tar.bz2
-    - name: Prepare environment
+    - name: Prepare environment and build
       run: |
         cd icecat-60.7.0
         mkdir objdir
@@ -24,9 +24,6 @@ jobs:
         touch ./browser/branding/unofficial/moz.build
         cd objdir
         env CXX='/usr/bin/clang++ -stdlib=libc++' ../configure --with-l10n-base=../l10n --enable-official-branding
-    - name: Build
-      run: |
-        cd icecat-60.7.0/objdir
         make -j8
         make package
     - name : Upload artifact
