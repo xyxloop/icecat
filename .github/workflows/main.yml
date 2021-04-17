@@ -6,29 +6,20 @@ jobs:
   steps:
     - name: SDK
       run: |
-        wget https://github.com/phracker/MacOSX-SDKs/releases/download/11.0-11.1/MacOSX10.13.sdk.tar.xz
-        tar xf MacOSX10.13.sdk.tar.xz
-        mv MacOSX10.13.sdk/ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
+        wget https://github.com/phracker/MacOSX-SDKs/releases/download/11.0-11.1/MacOSX10.11.sdk.tar.xz
+        tar xf MacOSX10.11.sdk.tar.xz
+        mv MacOSX10.11.sdk/ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
     - name: Installation depends
       run: |
         brew install yasm autoconf@2.13
-    - name: Download source code
+    - name: Download source code and build
       run: |
-        wget https://ftp.gnu.org/gnu/gnuzilla/60.7.0/icecat-60.7.0-gnu1.tar.bz2
-        tar xfj icecat-60.7.0-gnu1.tar.bz2
-    - name: Prepare environment and build
-      run: |
-        cd icecat-60.7.0
-        mkdir objdir
-        mkdir -p ./browser/branding/unofficial/
-        touch ./browser/branding/unofficial/moz.build
-        cd objdir
-        env CXX='/usr/bin/clang++ -stdlib=libc++' ../configure --with-l10n-base=../l10n --enable-official-branding
-        make -j8
-        make package
+        wget https://raw.githubusercontent.com/xyxloop/icecat/main/icebuild?token=ASVD2V6TR5QQBKABO62JSM3APMJES
+        chmod +x ./icebuild
+        ./icebuild
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
         name: IceCat
-        path: icecat-60.7.0/dist
+        path: icecat-60.7.0//objdir/dist
       
