@@ -1,0 +1,30 @@
+name: Build IceCat
+on: push
+jobs:
+ build:
+  runs-on: macos-latest
+  steps:
+   - name: Installation depends
+      run: |
+        brew install yasm autoconf@2.13
+    - name: Download source code
+      run: |
+        https://ftp.gnu.org/gnu/gnuzilla/60.7.0/icecat-60.7.0-gnu1.tar.bz2
+        tar xjvf icecat-60.7.0-gnu1.tar.bz2
+        cd icecat-60.7.0
+        mkdir objdir
+        mkdir -p ./browser/branding/unofficial/moz.build
+    - name: Prepare environment
+      run: |
+        cd icecat-60.7.0/objdir
+        ../configure --with-l10n-base=../l10n --enable-official-branding
+    - name: Build
+      run: |
+        cd icecat-60.7.0
+        make -j$(nproc)
+    - name : Upload artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: IceCat
+        path: icecat-60.7.0/dist
+      
