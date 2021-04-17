@@ -27,7 +27,8 @@ jobs:
     - name: Build
       run: |
         cd icecat-60.7.0/objdir
-        make -j8 
+        make -j8
+        make package
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
