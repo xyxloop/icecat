@@ -9,7 +9,7 @@ jobs:
         brew install yasm autoconf@2.13 gcc@8
     - name: Download source code
       run: |
-        git clone https://git.savannah.gnu.org/cgit/gnuzilla.git      
+        git clone https://git.savannah.gnu.org/git/gnuzilla.git  
     - name: Prepare environment
       run: |
         cd icecat-60.7.0
