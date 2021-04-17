@@ -26,8 +26,8 @@ jobs:
         ../configure CC=gcc-10 CXX=g++-10 --with-l10n-base=../l10n --enable-official-branding
     - name: Build
       run: |
-        cd icecat-60.7.0
-        make -j8 CC=gcc-10 CXX=g++-10
+        cd icecat-60.7.0/objdir
+        make -j8 
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
