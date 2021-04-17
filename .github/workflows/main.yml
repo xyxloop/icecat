@@ -23,7 +23,7 @@ jobs:
         mkdir -p ./browser/branding/unofficial/
         touch ./browser/branding/unofficial/moz.build
         cd objdir
-        ../configure --with-l10n-base=../l10n --enable-official-branding
+        env CXX='/usr/bin/clang++ -stdlib=libc++' ../configure --with-l10n-base=../l10n --enable-official-branding
     - name: Build
       run: |
         cd icecat-60.7.0/objdir
