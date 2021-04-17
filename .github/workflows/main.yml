@@ -1,5 +1,7 @@
 name: Build IceCat
-on: push
+on: 
+ release:
+    types: [published]
 jobs:
  build:
   runs-on: macos-latest
