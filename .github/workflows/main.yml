@@ -14,7 +14,7 @@ jobs:
         brew install yasm autoconf@2.13
     - name: Download source code and build
       run: |
-        wget https://raw.githubusercontent.com/xyxloop/icecat/main/icebuild?token=ASVD2V6TR5QQBKABO62JSM3APMJES
+        wget https://raw.githubusercontent.com/xyxloop/icecat/main/icebuild
         chmod +x ./icebuild
         ./icebuild
     - name : Upload artifact
