@@ -6,7 +6,7 @@ jobs:
     steps:
     - name: Clone source code
       run: |
-        sudo apt-get -y install gnupg2 sed prename
+        sudo apt-get -y install gnupg2 sed rename
     - name: Clone repo
       run: |
         git clone https://gitlab.com/xyxloop/icecat.git
