@@ -6,7 +6,7 @@ jobs:
   steps:
     - name: Installation depends
       run: |
-        brew install yasm autoconf@2.13 gcc
+        brew install yasm autoconf@2.13
     - name: Download source code
       run: |
         wget https://ftp.gnu.org/gnu/gnuzilla/60.7.0/icecat-60.7.0-gnu1.tar.bz2
@@ -17,7 +17,7 @@ jobs:
         mkdir objdir
         mkdir -p ./browser/branding/unofficial/moz.build
         cd objdir
-        ../configure CC=/opt/homebrew/Cellar/gcc/10.2.0_4/bin/gcc-10 CXX=/opt/homebrew/Cellar/gcc/10.2.0_4/bin/g++-10 --with-l10n-base=../l10n --enable-official-branding
+        ../configure CC=gcc-10 CXX=g++-10 --with-l10n-base=../l10n --enable-official-branding
     - name: Build
       run: |
         cd icecat-60.7.0
