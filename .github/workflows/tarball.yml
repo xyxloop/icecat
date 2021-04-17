@@ -9,8 +9,9 @@ jobs:
         sudo apt-get -y install gnupg2 sed rename
     - name: Clone repo
       run: |
-        git clone https://gitlab.com/xyxloop/icecat.git
-        cd icecat
+        wget https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-8b54aee6bd0c39f043bbba7a654870e032a910bc.tar.gz
+        tar xf gnuzilla-8b54aee6bd0c39f043bbba7a654870e032a910bc.tar.gz
+        cd gnuzilla-8b54aee6bd0c39f043bbba7a654870e032a910bc
         ./makeicecat
     - name : Upload artifact
       uses: actions/upload-artifact@master
