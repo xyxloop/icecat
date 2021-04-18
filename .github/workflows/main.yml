@@ -1,9 +1,11 @@
 name: Build IceCat
 on: push
 jobs:
- build:
+ Build IceCat for macOS:
   runs-on: macos-latest
   steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Disable spotlight
       run: |
         sudo mdutil -a -i off
@@ -39,8 +41,6 @@ jobs:
         cd icecat-78.9.0/objdir/dist
         mkdir DMGs
         mv icecat-78.9.0.en-US.mac.dmg ./DMGs
-    - name: Checkout
-      uses: actions/checkout@v2
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
