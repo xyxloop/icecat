@@ -16,7 +16,7 @@ jobs:
     - name: Download source code
       run: |
         wget https://github.com/xyxloop/icecat/releases/download/v78.9/icecat-78.9.0-rh1.tar.bz2
-        tar xf icecat-78.9.0-rh1.tar.bz2
+        tar xjf icecat-78.9.0-rh1.tar.bz2
     - name: Build
       run: |
         cd icecat-78.9.0
