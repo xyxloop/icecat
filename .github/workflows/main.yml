@@ -1,5 +1,5 @@
 name: Build IceCat
-on: push
+on: fork
 jobs:
  build:
   runs-on: macos-latest
