@@ -34,9 +34,14 @@ jobs:
       run: |
         cd icecat-78.9.0/objdir
         make package
+    - name: Move Files
+      run: |
+        cd icecat-78.9.0/objdir/dist
+        mkdir DMGs
+        mv icecat-78.9.0.en-US.mac.dmg ./DMGs
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
         name: IceCat
-        path: icecat-78.9.0/objdir/dist
+        path: icecat-78.9.0/objdir/dist/DMGs
       
