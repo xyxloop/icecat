@@ -5,7 +5,9 @@ jobs:
   runs-on: macos-latest
   steps:
     - name: Disable spotlight
-      run: sudo mdutil -a -i off
+      run: |
+        sudo mdutil -a -i off
+        nproc
     - name: SDK
       run: |
         wget https://github.com/phracker/MacOSX-SDKs/releases/download/11.0-11.1/MacOSX10.11.sdk.tar.xz
