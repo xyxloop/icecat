@@ -33,5 +33,5 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: IceCat
-        path: Icecat-mac/icecat-78.9.0/objdir/dist
+        path: icecat-78.9.0/objdir/dist
       
