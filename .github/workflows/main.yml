@@ -1,7 +1,5 @@
 name: Build IceCat
-on: 
- release:
-    types: [published]
+on: push
 jobs:
  build:
   runs-on: macos-latest
@@ -13,15 +11,16 @@ jobs:
         mv MacOSX10.11.sdk/ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
     - name: Installation depends
       run: |
-        brew install yasm autoconf@2.13
+        brew install yasm mercurial gawk ccache python autoconf@2.13 rust nasm node
+        cargo install cbindgen
     - name: Download source code and build
       run: |
-        wget https://raw.githubusercontent.com/xyxloop/icecat/main/icebuild
-        chmod +x ./icebuild
-        ./icebuild
+        git clone https://github.com/xyxloop/Icecat-mac
+        cd Icecat-mac/building
+        ./icebuild.sh
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
         name: IceCat
-        path: icecat-60.7.0//objdir/dist
+        path: Icecat-mac/icecat-78.9.0/objdir/dist
       
