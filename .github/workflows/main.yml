@@ -21,8 +21,8 @@ jobs:
         cargo install cbindgen
     - name: Download source code
       run: |
-        wget https://github.com/xyxloop/icecat/releases/download/v78.9/icecat-78.9.0-rh1.tar.bz2
-        tar xjf icecat-78.9.0-rh1.tar.bz2
+        wget https://github.com/xyxloop/icecattarball/releases/download/78.9.0-gnu1/icecat-78.9.0-gnu1.tar.bz2
+        tar xjf icecat-78.9.0-gnu1.tar.bz2
         cd icecat-78.9.0/browser/installer
         rm package-manifest.in
         wget https://raw.githubusercontent.com/xyxloop/icecat/main/package-manifest.in
@@ -47,10 +47,3 @@ jobs:
       with:
         name: IceCat
         path: icecat-78.9.0/objdir/dist/DMGs
-    - name: Release
-      uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
-      with:
-        files: icecat-78.9.0/objdir/dist/DMGs/icecat-78.9.0.en-US.mac.dmg
-      env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
