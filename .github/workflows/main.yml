@@ -7,6 +7,7 @@ jobs:
     - name: Disable spotlight
       run: |
         sudo mdutil -a -i off
+        brew install coreutils
         nproc
     - name: SDK
       run: |
