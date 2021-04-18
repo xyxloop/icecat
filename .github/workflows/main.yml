@@ -1,8 +1,9 @@
 name: Build IceCat
 on: push
 jobs:
- Build IceCat for macOS:
+ build:
   runs-on: macos-latest
+  name: Build IceCat for macOS
   steps:
     - name: Checkout
       uses: actions/checkout@v2
