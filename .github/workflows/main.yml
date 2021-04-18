@@ -20,13 +20,16 @@ jobs:
       run: |
         wget https://github.com/xyxloop/icecat/releases/download/v78.9/icecat-78.9.0-rh1.tar.bz2
         tar xjf icecat-78.9.0-rh1.tar.bz2
+        cd icecat-78.9.0/browser/installer
+        rm package-manifest.in
+        wget https://raw.githubusercontent.com/xyxloop/icecat/main/package-manifest.in
     - name: Build
       run: |
         cd icecat-78.9.0
         mkdir -vp objdir
         cd objdir
         ../configure --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
-        make -j3
+        make -j6
     - name: Build package
       run: |
         cd icecat-78.9.0/objdir
