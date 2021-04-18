@@ -13,11 +13,21 @@ jobs:
       run: |
         brew install yasm mercurial gawk ccache python autoconf@2.13 rust nasm node
         cargo install cbindgen
-    - name: Download source code and build
+    - name: Download source code
       run: |
-        git clone https://github.com/xyxloop/Icecat-mac
-        cd Icecat-mac/building
-        ./icebuild.sh
+        curl -O "https://github.com/xyxloop/icecat/releases/download/v78.9/icecat-78.9.0-rh1.tar.bz2"
+        tar xjf icecat-78.9.0-rh1.tar.bz2
+    - name: Build
+      run: |
+        cd icecat-78.9.0
+        mkdir -vp objdir
+        mkdir -vp browser/branding/unofficial/moz.build
+        cd objdir
+        ../configure --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
+        make -j12
+        rm dist/IceCat.app/Contents/Resources/browser/extensions/https-everywhere-eff@eff.org/META-INF/cose.manifest
+        rm dist/IceCat.app/Contents/Resources/browser/extensions/jid1-KtlZuoiikVfFew@jetpack/META-INF/cose.manifest
+        make package
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
