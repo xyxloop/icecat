@@ -7,8 +7,6 @@ jobs:
     - name: Disable spotlight
       run: |
         sudo mdutil -a -i off
-        brew install coreutils
-        nproc
     - name: SDK
       run: |
         wget https://github.com/phracker/MacOSX-SDKs/releases/download/11.0-11.1/MacOSX10.11.sdk.tar.xz
@@ -28,7 +26,7 @@ jobs:
         mkdir -vp objdir
         cd objdir
         ../configure --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
-        make -j12
+        make -j3
     - name: Build package
       run: |
         cd icecat-78.9.0/objdir
