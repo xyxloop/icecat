@@ -21,7 +21,6 @@ jobs:
       run: |
         cd icecat-78.9.0
         mkdir -vp objdir
-        mkdir -vp browser/branding/unofficial/moz.build
         cd objdir
         ../configure --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
         make -j12
