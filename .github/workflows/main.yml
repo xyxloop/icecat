@@ -25,6 +25,7 @@ jobs:
         ../configure --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
         make -j12
     - name: Build package
+      run: |
         cd icecat-78.9.0/objdir
         rm dist/IceCat.app/Contents/Resources/browser/extensions/https-everywhere-eff@eff.org/META-INF/cose.manifest
         rm dist/IceCat.app/Contents/Resources/browser/extensions/jid1-KtlZuoiikVfFew@jetpack/META-INF/cose.manifest
