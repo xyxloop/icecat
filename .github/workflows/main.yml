@@ -26,24 +26,22 @@ jobs:
         cd icecat-78.9.0/browser/installer
         rm package-manifest.in
         wget https://raw.githubusercontent.com/xyxloop/icecat/main/package-manifest.in
-    - name: Build
+    - name: Configure
       run: |
         cd icecat-78.9.0
         mkdir -vp objdir
         cd objdir
         ../configure --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
-        make -j6
+    - name: Build
+      run: |
+        cd icecat-78.9.0/objdir
+        make -j3
     - name: Build package
       run: |
         cd icecat-78.9.0/objdir
         make package
-    - name: Move Files
-      run: |
-        cd icecat-78.9.0/objdir/dist
-        mkdir DMGs
-        mv icecat-78.9.0.en-US.mac.dmg ./DMGs
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: IceCat
-        path: icecat-78.9.0/objdir/dist/DMGs
+        name: icecat-78.9.0.en-US.mac.dmg
+        path: icecat-78.9.0/objdir/dist/icecat-78.9.0.en-US.mac.dmg
