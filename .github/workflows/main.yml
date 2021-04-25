@@ -1,5 +1,5 @@
 name: Build IceCat
-on: push
+on: [push, workflow_dispatch]
 jobs:
  build:
   runs-on: macos-latest
@@ -12,15 +12,15 @@ jobs:
         sudo mdutil -a -i off
     - name: SDK
       run: |
-        wget https://github.com/phracker/MacOSX-SDKs/releases/download/11.0-11.1/MacOSX10.11.sdk.tar.xz
-        tar xf MacOSX10.11.sdk.tar.xz
+        wget https://github.com/phracker/MacOSX-SDKs/releases/download/11.0-11.1/MacOSX10.11.sdk.tar.xz > /tmp/wget-log.log
+        tar xf MacOSX10.11.sdk.tar.xz 
         mv MacOSX10.11.sdk/ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
     - name: Installation depends
       run: |
-        brew install yasm mercurial gawk ccache autoconf@2.13 rust nasm node
+        brew install yasm mercurial gawk ccache autoconf@2.13 rust nasm node > /tmp/brew.log
     - name: Download source code
       run: |
-        wget https://github.com/xyxloop/icecattarball/releases/download/78.9.0-gnu1/icecat-78.9.0-gnu1.tar.bz2
+        wget https://github.com/xyxloop/icecattarball/releases/download/78.9.0-gnu1/icecat-78.9.0-gnu1.tar.bz2 > /tmp/wget-tarball.log
         tar xjf icecat-78.9.0-gnu1.tar.bz2
         cd icecat-78.9.0/browser/installer
         rm package-manifest.in
