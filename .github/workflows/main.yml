@@ -12,17 +12,17 @@ jobs:
         sudo mdutil -a -i off
     - name: SDK
       run: |
-        wget https://github.com/phracker/MacOSX-SDKs/releases/download/11.0-11.1/MacOSX10.11.sdk.tar.xz > /tmp/wget-log.log
+        wget -q https://github.com/phracker/MacOSX-SDKs/releases/download/11.0-11.1/MacOSX10.11.sdk.tar.xz
         tar xf MacOSX10.11.sdk.tar.xz 
         mv MacOSX10.11.sdk/ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
     - name: Installation depends
       run: |
-        brew install yasm mercurial gawk ccache autoconf@2.13 rust nasm node > /tmp/brew.log
+        brew install yasm mercurial gawk ccache autoconf@2.13 rust nasm node
     - name: Download source code
       run: |
-        wget https://github.com/xyxloop/icecattarball/releases/download/78.9.0-gnu1/icecat-78.9.0-gnu1.tar.bz2 > /tmp/wget-tarball.log
-        tar xjf icecat-78.9.0-gnu1.tar.bz2
-        cd icecat-78.9.0/browser/installer
+        wget -q https://github.com/xyxloop/icecattarball/releases/download/78.10.0-gnu1/icecat-78.10.0-gnu1.tar.bz2
+        tar xjf icecat-78.10.0-gnu1.tar.bz2
+        cd icecat-78.10.0/browser/installer
         rm package-manifest.in
         wget https://raw.githubusercontent.com/xyxloop/icecat/main/package-manifest.in
     - name: Configure
@@ -33,14 +33,14 @@ jobs:
         ../configure --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
     - name: Build
       run: |
-        cd icecat-78.9.0/objdir
+        cd icecat-78.10.0/objdir
         make -j3
     - name: Build package
       run: |
-        cd icecat-78.9.0/objdir
+        cd icecat-78.10.0/objdir
         make package
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: icecat-78.9.0.en-US.mac.dmg
-        path: icecat-78.9.0/objdir/dist/icecat-78.9.0.en-US.mac.dmg
+        name: icecat-78.10.0.en-US.mac.dmg
+        path: icecat-78.10.0/objdir/dist/icecat-78.10.0.en-US.mac.dmg
