@@ -20,7 +20,7 @@ jobs:
         brew install yasm mercurial gawk ccache autoconf@2.13 rust nasm node
     - name: Download source code
       run: |
-        https://github.com/xyxloop/icecattarball/releases/download/78.10.1-gnu1/icecat-78.10.1-gnu1.tar.bz2
+        wget -q https://github.com/xyxloop/icecattarball/releases/download/78.10.1-gnu1/icecat-78.10.1-gnu1.tar.bz2
         tar xjf icecat-78.10.1-gnu1.tar.bz2
         cd icecat-78.10.1/browser/installer
         rm package-manifest.in
