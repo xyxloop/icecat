@@ -23,7 +23,7 @@ jobs:
         wget -q https://github.com/xyxloop/icecattarball/releases/download/78.11.0-gnu1/icecat-78.11.0-gnu1.tar.bz2
         tar xjf icecat-78.11.0-gnu1.tar.bz2
         wget -q https://raw.githubusercontent.com/elsorino/Icecat-mac/master/building/icecat.icns
-        cp ./icecat.icns browser/branding/official/icecat.icns
+        cp ./icecat.icns icecat-78.11.0/browser/branding/official/icecat.icns
     - name: Configure
       run: |
         cd icecat-78.11.0
