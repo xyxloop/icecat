@@ -2,7 +2,7 @@ name: Build IceCat
 on: [push, workflow_dispatch]
 jobs:
  build:
-  runs-on: macos-latest
+  runs-on: macos-11
   name: Build IceCat for macOS
   steps:
     - name: Checkout
@@ -22,9 +22,6 @@ jobs:
       run: |
         wget -q https://github.com/xyxloop/icecattarball/releases/download/78.11.0-gnu1/icecat-78.11.0-gnu1.tar.bz2
         tar xjf icecat-78.11.0-gnu1.tar.bz2
-        cd icecat-78.11.0/browser/installer
-        rm package-manifest.in
-        wget -q https://raw.githubusercontent.com/xyxloop/icecat/main/package-manifest.in
     - name: Configure
       run: |
         cd icecat-78.11.0
