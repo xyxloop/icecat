@@ -29,7 +29,7 @@ jobs:
         cd icecat-78.11.0
         mkdir -vp objdir
         cd objdir
-        ../configure --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
+        ../configure --target=aarch64-apple-darwin --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
     - name: Build
       run: |
         cd icecat-78.11.0/objdir
