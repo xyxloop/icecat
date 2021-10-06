@@ -2,7 +2,7 @@ name: Build IceCat
 on: [push, workflow_dispatch]
 jobs:
  build:
-  runs-on: macos-latest
+  runs-on: macos-10.15
   name: Build IceCat for macOS
   steps:
     - name: Disable spotlight
@@ -18,26 +18,26 @@ jobs:
         brew install yasm mercurial gawk ccache autoconf@2.13 rust nasm node
     - name: Download source code
       run: |
-        wget -q https://github.com/xyxloop/icecattarball/releases/download/78.14.0-gnu1/icecat-78.14.0-gnu1.tar.bz2
-        tar xjf icecat-78.14.0-gnu1.tar.bz2
+        wget -q https://github.com/xyxloop/icecattarball/releases/download/78.15.0-gnu1/icecat-78.15.0-gnu1.tar.bz2
+        tar xjf icecat-78.15.0-gnu1.tar.bz2
         wget -q https://raw.githubusercontent.com/elsorino/Icecat-mac/master/building/icecat.icns
-        cp ./icecat.icns icecat-78.14.0/browser/branding/official/icecat.icns
+        cp ./icecat.icns icecat-78.15.0/browser/branding/official/icecat.icns
     - name: Configure
       run: |
-        cd icecat-78.14.0
+        cd icecat-78.15.0
         mkdir -vp objdir
         cd objdir
         ../configure --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
     - name: Build
       run: |
-        cd icecat-78.14.0/objdir
+        cd icecat-78.15.0/objdir
         make -j3
     - name: Build package
       run: |
-        cd icecat-78.14.0/objdir
+        cd icecat-78.15.0/objdir
         make package
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: icecat-78.14.0.en-US.mac.dmg
-        path: icecat-78.14.0/objdir/dist/icecat-78.14.0.en-US.mac.dmg
+        name: icecat-78.15.0.en-US.mac.dmg
+        path: icecat-78.15.0/objdir/dist/icecat-78.15.0.en-US.mac.dmg
