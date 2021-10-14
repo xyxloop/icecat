@@ -10,9 +10,9 @@ jobs:
         sudo mdutil -a -i off
     - name: SDK
       run: |
-        wget -q https://github.com/phracker/MacOSX-SDKs/releases/download/11.0-11.1/MacOSX10.11.sdk.tar.xz
-        tar xf MacOSX10.11.sdk.tar.xz 
-        mv MacOSX10.11.sdk/ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
+        wget -q https://github.com/phracker/MacOSX-SDKs/releases/download/11.0-11.1/MacOSX10.12.sdk.tar.xz
+        tar xf MacOSX10.12.sdk.tar.xz 
+        mv MacOSX10.12.sdk/ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
     - name: Installation depends
       run: |
         brew install yasm mercurial gawk ccache autoconf@2.13 rust nasm node
