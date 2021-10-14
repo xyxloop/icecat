@@ -27,7 +27,7 @@ jobs:
         cd icecat-91.2.0
         mkdir -vp objdir
         cd objdir
-        ../configure --target=aarch64-apple-darwin --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk
+        python3 ../configure.py --target=aarch64-apple-darwin --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk
     - name: Build
       run: |
         cd icecat-91.2.0/objdir
