@@ -18,26 +18,26 @@ jobs:
         brew install yasm mercurial gawk ccache autoconf@2.13 rust nasm node
     - name: Download source code
       run: |
-        wget -q https://github.com/xyxloop/icecattarball/releases/download/91.7.0-gnu1/icecat-91.7.0-gnu1.tar.bz2
-        tar xjf icecat-91.7.0-gnu1.tar.bz2
+        wget -q https://github.com/xyxloop/icecattarball/releases/download/91.8.0-gnu1/icecat-91.8.0-gnu1.tar.bz2
+        tar xjf icecat-91.8.0-gnu1.tar.bz2
         wget -q https://raw.githubusercontent.com/elsorino/Icecat-mac/master/building/icecat.icns
-        cp ./icecat.icns icecat-91.7.0/browser/branding/official/icecat.icns
+        cp ./icecat.icns icecat-91.8.0/browser/branding/official/icecat.icns
     - name: Configure
       run: |
-        cd icecat-91.7.0
+        cd icecat-91.8.0
         mkdir -vp objdir
         cd objdir
         python3 ../configure.py --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk --disable-update-agent --disable-updater
     - name: Build
       run: |
-        cd icecat-91.7.0/objdir
+        cd icecat-91.8.0/objdir
         make -j3
     - name: Build package
       run: |
-        cd icecat-91.7.0/objdir
+        cd icecat-91.8.0/objdir
         make package
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: icecat-91.7.0.en-US.mac.dmg
-        path: icecat-91.7.0/objdir/dist/icecat-91.7.0.en-US.mac.dmg
+        name: icecat-91.8.0.en-US.mac.dmg
+        path: icecat-91.8.0/objdir/dist/icecat-91.8.0.en-US.mac.dmg
