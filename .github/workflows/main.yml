@@ -2,7 +2,7 @@ name: Build IceCat
 on: workflow_dispatch
 jobs:
  build:
-  runs-on: macos-10.15
+  runs-on: macos-11
   name: Build IceCat for macOS
   steps:
     - name: Disable spotlight
@@ -34,7 +34,7 @@ jobs:
         make -j3
     - name: Build package
       run: |
-        cd icecat-91.10.0/objdir
+        cd icecat-91.11.0/objdir
         make package
     - name : Upload artifact
       uses: actions/upload-artifact@master
