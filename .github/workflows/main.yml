@@ -27,8 +27,8 @@ jobs:
         cd icecat-91.11.0
         mkdir -vp objdir
         cd objdir
-        rustup install 1.59
-        rustup default 1.59
+        rustup install 1.56
+        rustup default 1.56
         python3 ../configure.py --with-l10n-base=../l10n --enable-official-branding --with-macos-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk --disable-update-agent --disable-updater
     - name: Build
       run: |
