@@ -2,7 +2,7 @@ name: Build IceCat
 on: workflow_dispatch
 jobs:
  build:
-  runs-on: macos-11
+  runs-on: macos-10.15
   name: Build IceCat for macOS
   steps:
     - name: Disable spotlight
@@ -15,7 +15,7 @@ jobs:
         mv MacOSX10.12.sdk/ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
     - name: Installation depends
       run: |
-        brew install yasm mercurial gawk ccache autoconf@2.13 rust nasm node
+        brew install yasm mercurial gawk ccache autoconf@2.13 nasm node
     - name: Download source code
       run: |
         wget -q https://github.com/xyxloop/icecattarball/releases/download/91.11.0-gnu1/icecat-91.11.0-gnu1.tar.bz2
